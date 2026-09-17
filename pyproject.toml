@@ -5,12 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "data-cleaning-skill"
 version = "0.1.0"
-description = "Configurable data cleaning pipeline"
+description = "Configurable data cleaning pipeline and random joke generator"
 requires-python = ">=3.9"
-dependencies = ["pandas>=2.0", "pyyaml>=6.0", "python-dateutil>=2.8"]
+dependencies = ["pandas>=2.0", "pyyaml>=6.0", "python-dateutil>=2.8", "requests>=2.31"]
 
 [project.scripts]
 data-clean = "data_cleaning.cli:main"
+joke = "joke_generator:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools]
+py-modules = ["joke_generator"]

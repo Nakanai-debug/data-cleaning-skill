@@ -1,48 +1,30 @@
-# Data Cleaning Skill
+# Random joke generator
 
-Template Python thực tế cho data pipeline và data cleaning. Hỗ trợ CSV/Parquet, tạo báo cáo chất lượng dữ liệu và xuất dữ liệu sạch.
+The project now includes a small command-line random joke generator backed by [JokeAPI](https://v2.jokeapi.dev/).
 
-## Sơ đồ pipeline
+## Run it
 
-```mermaid
-flowchart LR
-    A[Raw data CSV/API/DB] --> B[Ingest]
-    B --> C[Validate schema]
-    C --> D[Clean]
-    D --> E[Transform]
-    E --> F[Quality report]
-    F --> G[Cleaned data]
-    G --> H[Analytics / ML / BI]
-```
-
-## Cài đặt
+After installation:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt
 pip install -e .
+joke
+joke --safe
+joke --category Programming
 ```
 
-## Chạy pipeline
+The generator supports both JokeAPI response formats:
+
+- `single`: prints one joke line.
+- `twopart`: prints setup and delivery on separate lines.
+
+The API request uses a timeout and converts network, HTTP, malformed JSON, and API errors into a readable `JokeAPIError`.
+
+## Data-cleaning pipeline
+
+The original data-cleaning commands remain available:
 
 ```bash
 data-clean --input data/raw/input.csv --output data/processed/cleaned.csv --report reports/quality.json --config configs/default.yaml
-```
-
-## Các bước hỗ trợ
-
-- Missing values: `median`, `mean`, `mode`, `constant`, `drop`.
-- Format: chuẩn hóa tên cột, ngày tháng, số và text.
-- Typo: thay thế theo dictionary domain-specific.
-- Duplicates: xóa bản ghi trùng theo toàn bộ cột hoặc subset.
-- Outlier: phát hiện theo IQR; `clip` hoặc `drop`.
-- Quality report: row count, missing rate, duplicate count và thay đổi.
-
-Với dữ liệu mất cân bằng, hãy resample chỉ trên tập train sau khi chia train/validation/test để tránh data leakage.
-
-## Test
-
-```bash
-pytest -q
 ```
