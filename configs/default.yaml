@@ -1,0 +1,31 @@
+input:
+  path: data/raw/input.csv
+  format: csv
+
+output:
+  path: data/processed/cleaned.csv
+  report: reports/quality.json
+
+cleaning:
+  standardize_column_names: true
+  missing:
+    strategy: median
+    constant: "Unknown"
+    drop_threshold: 0.8
+  duplicates:
+    enabled: true
+    subset: []
+  dates:
+    columns: []
+    dayfirst: false
+  numeric:
+    columns: []
+  text:
+    columns: []
+    lowercase: false
+    strip: true
+  typo_map: {}
+  outliers:
+    enabled: true
+    action: clip
+    columns: []
