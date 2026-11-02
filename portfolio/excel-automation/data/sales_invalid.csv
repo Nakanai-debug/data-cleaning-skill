@@ -1,0 +1,4 @@
+order_id,date,region,revenue
+S001,2025-01-02,North,120000
+S002,bad-date,South,abc
+S001,2025-01-03,North,-10
