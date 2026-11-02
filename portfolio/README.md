@@ -1,9 +1,10 @@
 # Data Analyst Portfolio — TO PHUONG THUY
 
-Three runnable **synthetic-data** projects for Data Analyst / Business Data Analyst interviews.
+A raw-data quality pipeline plus three **synthetic-data** analytics demos for Data Analyst / Business Data Analyst interviews.
 
 | Project | Main skill |
 |---|---|
+| [Raw Data Quality & Cleaning Pipeline](raw-data-quality/) | Data profiling, validation, quarantine, auditability |
 | [Hotel Revenue Analysis](hotel-revenue-analysis/) | Occupancy, ADR, RevPAR, data validation |
 | [E-commerce Metrics](ecommerce-metrics/) | SQL, GMV, AOV, repeat purchase |
 | [Python + Excel Automation](excel-automation/) | CSV validation, logging, Excel reporting |
