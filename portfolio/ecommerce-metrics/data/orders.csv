@@ -1,0 +1,13 @@
+order_id,customer_id,order_date,status,category,amount_vnd
+O001,C001,2025-01-04,completed,Beauty,150000
+O002,C002,2025-01-07,completed,Home,250000
+O003,C001,2025-01-15,completed,Beauty,400000
+O004,C003,2025-01-18,cancelled,Food,200000
+O005,C004,2025-02-03,completed,Food,180000
+O006,C002,2025-02-10,completed,Home,300000
+O007,C005,2025-02-17,completed,Beauty,120000
+O008,C001,2025-03-01,completed,Home,500000
+O009,C003,2025-03-05,completed,Food,230000
+O010,C006,2025-03-07,cancelled,Beauty,100000
+O011,C004,2025-03-11,completed,Food,200000
+O012,C007,2025-03-20,completed,Home,350000
