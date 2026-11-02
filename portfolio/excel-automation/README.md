@@ -1,9 +1,19 @@
-# Python + Excel Automation — synthetic demo
+# Python + Excel Automation — synthetic data quality demo
 
-**Interview focus:** validate CSV inputs, write a multi-sheet Excel report, capture invalid rows and log warnings.
+**Question:** Can recurring CSV files be checked and converted into auditable Excel reports?
 
-The companion **DA_Portfolio_Interview_2026-11-03.zip** bundle includes `pipeline.py`, `test_pipeline.py`, valid/invalid CSV fixtures, an example workbook and log. These runnable files have not yet been uploaded to this GitHub folder.
+**Run from repository root:**
+```bash
+pip install -r portfolio/requirements.txt
+python portfolio/excel-automation/pipeline.py
+python portfolio/excel-automation/pipeline.py --input portfolio/excel-automation/data/sales_invalid.csv --output portfolio/excel-automation/output/invalid_demo.xlsx
+python -m unittest discover -s portfolio/excel-automation -p 'test_*.py'
+```
 
-**Validation:** required fields, duplicate order IDs, ISO dates, non-negative numeric revenue. The Excel output contains Clean Data, Summary, and Validation Errors sheets, with a summary chart.
+**Files:** `pipeline.py`, `test_pipeline.py`, synthetic valid and invalid CSV fixtures.
 
-**Interview discussion:** explain data-quality gates, transparent errors and why silently dropping rows damages reporting accuracy.
+**Output:** `output/sales_report.xlsx` with Clean Data, Summary + chart and Validation Errors; `output/pipeline.log` logs invalid rows.
+
+**Validation:** required columns, duplicate IDs, ISO date format, non-negative numeric revenue, empty keys.
+
+**Interview:** Show valid output, invalid input, error sheet and explain how validation protects reporting. No real-world time savings claimed.
