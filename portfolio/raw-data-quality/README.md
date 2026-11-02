@@ -1,42 +1,35 @@
 # Raw Data Quality & Cleaning Pipeline
 
-**Status:** Working prototype with synthetic examples; no production claims.
+**Verified prototype using synthetic data.** No customer data or production impact claims.
 
 ## Business problem
-Raw commerce orders and hotel reservations often contain duplicates, inconsistent dates, missing prices, invalid values, and conflicting statuses. Reporting directly from such records can distort KPIs.
+Raw order and booking exports may contain duplicate identifiers, inconsistent dates, missing prices, invalid values and conflicting statuses. These defects can corrupt reports if silently dropped or corrected.
 
-## Approach
-- Preserve original CSV unchanged.
-- Profile required fields and duplicate identifiers.
-- Normalize supported date formats, brand labels, and booking statuses.
-- Validate domain-specific business rules.
-- Split records into **clean.csv** and **quarantine.csv**; keep original row numbers and explicit error codes.
-- Generate **quality_report.json** with issue counts and input/output reconciliation.
+## Pipeline
+Raw CSV → schema checks → field standardization and business rules → clean / quarantine split → reconciliation and quality report. Original input remains unchanged.
 
 ## Reproduce (Python 3.10+, standard library only)
-From the repository root:
-
 ```bash
 python portfolio/raw-data-quality/clean.py --domain ecommerce --input portfolio/raw-data-quality/data/ecommerce_raw.csv --output portfolio/raw-data-quality/output/ecommerce
 python portfolio/raw-data-quality/clean.py --domain hotel --input portfolio/raw-data-quality/data/hotel_raw.csv --output portfolio/raw-data-quality/output/hotel
 python -m unittest discover -s portfolio/raw-data-quality -p 'test_*.py'
 ```
 
-## Output
-- `clean.csv`: validated records with normalized fields.
-- `quarantine.csv`: original invalid records, source row, reason codes.
-- `quality_report.json`: counts, error distribution, reconciliation.
+## Verified results
+| Domain | Input | Clean | Quarantine | Reconciled |
+|---|---:|---:|---:|---|
+| E-commerce | 5 | 2 | 3 | Yes |
+| Hotel | 4 | 2 | 2 | Yes |
 
-## Data quality policy
-- Duplicate IDs are **quarantined for review**, not silently dropped. Real order-item data may legitimately repeat order IDs.
-- Negative prices and room rates are flagged, not converted to positive numbers.
-- Missing prices are not invented.
-- Invalid date order is flagged, not swapped.
-- Date parsing accepts ISO and day-first slash format only.
-- All input records must appear in exactly one output.
+See [RESULTS.md](RESULTS.md) for before/after evidence and `output/` for generated CSV and JSON. All three unit tests passed in local execution on 2026-11-03.
+
+## Quality policy
+- Preserve raw files and source row numbers.
+- Quarantine duplicate IDs for review; do not silently deduplicate.
+- Flag negative or missing amounts rather than inventing values.
+- Flag reversed hotel dates rather than swapping them.
+- Output `clean.csv`, `quarantine.csv`, `quality_report.json`.
+- Reconcile input count = clean count + quarantine count.
 
 ## Limitations
-Synthetic fixtures; simple title-casing is not a full brand dictionary. No PII, no external data ingestion, no automatic duplicate resolution, no production benchmark. The hotel example treats one booking ID as one record. Additional source-specific rules would be needed for real PMS data.
-
-## Interview demo
-Show a raw record, the corresponding quarantine error code, the quality report, then explain why business rules prevent silent data corruption.
+Fixtures are tiny and synthetic. Brand title-casing is not a verified brand master; ID uniqueness depends on source grain; booking statuses depend on source system. No real-world performance benchmark or automated correction audit trail yet.
