@@ -1,4 +1,14 @@
-# Random joke generator
+# Data Analyst Portfolio — Interview Projects
+
+**[View three runnable synthetic-data portfolio demos](portfolio/README.md)**: Hotel Revenue Analysis, E-commerce SQL Metrics, and Python + Excel Automation.
+
+These are educational demonstrations using synthetic records, not company data or verified production impact.
+
+---
+
+## Other experiments in this repository
+
+### Random joke generator
 
 The project now includes a small command-line random joke generator backed by [JokeAPI](https://v2.jokeapi.dev/).
 
