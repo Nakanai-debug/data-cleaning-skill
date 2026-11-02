@@ -1,0 +1,5 @@
+booking_id,check_in,check_out,room_rate,status
+B001,2026-10-01,2026-10-03,1200000,confirmed
+B002,2026-10-05,2026-10-04,950000,confirmed
+B003,01/10/2026,03/10/2026,800000,CHECKED_OUT
+B004,2026-10-10,2026-10-12,-200000,unknown

@@ -1,0 +1,3 @@
+booking_id,check_in,check_out,room_rate,status,source_row,error_codes
+B002,2026-10-05,2026-10-04,950000,confirmed,3,INVALID_STAY_DATES
+B004,2026-10-10,2026-10-12,-200000,unknown,5,INVALID_ROOM_RATE|INVALID_STATUS

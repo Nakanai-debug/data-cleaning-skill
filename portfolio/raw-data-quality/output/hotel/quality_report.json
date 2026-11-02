@@ -1,0 +1,13 @@
+{
+  "domain": "hotel",
+  "input_rows": 4,
+  "clean_rows": 2,
+  "quarantine_rows": 2,
+  "issue_counts": {
+    "INVALID_ROOM_RATE": 1,
+    "INVALID_STATUS": 1,
+    "INVALID_STAY_DATES": 1
+  },
+  "reconciliation_passed": true,
+  "note": "All source records preserved in clean or quarantine; duplicate IDs require domain review."
+}

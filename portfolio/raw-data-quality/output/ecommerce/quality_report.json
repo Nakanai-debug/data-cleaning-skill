@@ -1,0 +1,12 @@
+{
+  "domain": "ecommerce",
+  "input_rows": 5,
+  "clean_rows": 2,
+  "quarantine_rows": 3,
+  "issue_counts": {
+    "DUPLICATE_ID_REVIEW": 2,
+    "INVALID_PRICE": 3
+  },
+  "reconciliation_passed": true,
+  "note": "All source records preserved in clean or quarantine; duplicate IDs require domain review."
+}
