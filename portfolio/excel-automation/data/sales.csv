@@ -1,0 +1,5 @@
+order_id,date,region,revenue
+S001,2025-01-02,North,120000
+S002,2025-01-04,South,95000
+S003,2025-01-05,North,180000
+S004,2025-01-07,Central,75000
