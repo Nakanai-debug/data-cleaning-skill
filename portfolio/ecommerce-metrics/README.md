@@ -1,11 +1,13 @@
 # E-commerce Metrics — synthetic SQL demo
 
-**Interview focus:** GMV, AOV, category performance and repeat purchase rate. All sample records are synthetic.
+**Question:** How do GMV, AOV, category contribution and repeat purchasing vary?
 
-- GMV (demo) = total completed-order amount.
-- AOV = GMV / completed orders.
-- Repeat purchase rate = customers with at least two completed orders / customers with at least one completed order. This is not cohort retention.
+**Run:** From repo root: `python portfolio/ecommerce-metrics/analyze.py`.
 
-Runnable `analyze.py`, `metrics.sql`, `orders.csv` and generated outputs are in the separately provided **DA_Portfolio_Interview_2026-11-03.zip** bundle; they have not yet been uploaded into this GitHub folder.
+**Files:** `data/orders.csv` is a small synthetic sample; `metrics.sql` contains three SQLite queries; `analyze.py` executes them and exports CSVs under `output/`.
 
-**Interview discussion:** why cancelled orders are excluded, why GMV differs from net revenue, and why CAC needs marketing spend data.
+**KPI definitions:** GMV = sum of completed order amounts for this demo; AOV = GMV / completed orders; repeat purchase = customers with 2+ completed orders / customers with 1+ completed orders. Repeat purchase is **not** cohort retention.
+
+**Caveats:** One category per order, no refunds, discounts, traffic or marketing spend. CAC and conversion cannot be calculated with this input.
+
+**Next:** Expand to PostgreSQL with order items, refunds, traffic and marketing costs.
